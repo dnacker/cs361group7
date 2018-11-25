@@ -1,4 +1,4 @@
-package com.pronunciation_match.pronunciationmatch;
+package com.pronunciation_match.pronunciationmatch.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +13,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.pronunciation_match.pronunciationmatch.R;
 
 public class GoogleLogin extends AppCompatActivity implements View.OnClickListener {
 
