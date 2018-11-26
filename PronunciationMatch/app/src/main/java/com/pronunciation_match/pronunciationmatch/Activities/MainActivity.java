@@ -16,7 +16,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Log.v("TAG","Hello world!");
         //setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this, GoogleLogin.class);
+
+    }
+
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, PhonemeSelectionActivity.class);
         startActivity(intent);
     }
 }
