@@ -5,4 +5,5 @@
     <string name="login">Login</string>
     <string name="title_activity_login">Sign in</string>
     <string name="gotoPhonemes">Phoneme Practice</string>
+    <string name="statsButton">Statistics</string>
 </resources>

@@ -31,4 +31,9 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent(this, PhonemeSelectionActivity.class);
         startActivity(intent);
     }
+
+    public void gotoStatistics(View view) {
+        Intent intent = new Intent (this, StatisticsViewActivity.class);
+        startActivity(intent);
+    }
 }
