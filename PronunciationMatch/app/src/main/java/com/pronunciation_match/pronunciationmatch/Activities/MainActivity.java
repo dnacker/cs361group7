@@ -26,18 +26,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startPhonemeSelectionActivity(View view) {
-        if (verifyUser()) {
+        //The body of this is commented out since we aren't verifying the user anymore
+        /*if (verifyUser()) {
             startActivity(new Intent(this, PhonemeSelectionActivity.class));
         } else {
             Toast toast = Toast.makeText(this, "Invalid password", Toast.LENGTH_SHORT);
             toast.show();
-        }
+        }*/
     }
 
-    private boolean verifyUser() {
+    //Don't necessarily need this anymore since we are using oogle OAuth
+    /*private boolean verifyUser() {
         EditText username = findViewById(R.id.editTextUserName);
         EditText password = findViewById(R.id.editTextPassword);
 
         return username.getText().toString().equals("user") && password.getText().toString().equals("password");
-    }
+    }*/
 }
