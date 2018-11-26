@@ -16,11 +16,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Log.v("TAG","Hello world!");
         //setContentView(R.layout.activity_main);
-
-    }
-
-    protected void onStart() {
-        super.onStart();
         Intent intent = new Intent(this, GoogleLogin.class);
         startActivity(intent);
     }

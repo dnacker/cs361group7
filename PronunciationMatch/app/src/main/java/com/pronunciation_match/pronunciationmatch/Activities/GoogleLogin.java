@@ -59,12 +59,9 @@ public class GoogleLogin extends AppCompatActivity implements View.OnClickListen
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-            Log.d("ASSIGNACCOUNT", "Attempting account assignment");
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            Log.d("GOTACCOUNT", "Account got");
             // Signed in do stuff with profile
             String firstName = account.getGivenName();
-            Log.d("FIRSTNAME", firstName);
             String idToken = account.getIdToken();
             Intent mainMenu = new Intent(this, MainMenu.class);
             mainMenu.putExtra(USER_NAME, firstName);
