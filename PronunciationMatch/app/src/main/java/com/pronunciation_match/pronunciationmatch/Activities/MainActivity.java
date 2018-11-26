@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, GoogleLogin.class);
+        Intent intent = new Intent(this, PhonemeSelectionActivity.class);
         startActivity(intent);
     }
 }
