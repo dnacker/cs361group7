@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -16,7 +15,8 @@ import com.google.android.gms.tasks.Task;
 import com.pronunciation_match.pronunciationmatch.R;
 
 public class GoogleLogin extends AppCompatActivity implements View.OnClickListener {
-
+    public static final String USER_NAME = "com.pronunciation_match.NAME";
+    public static final String ID_TOKEN = "com.pronunciation_match.TOKEN";
     static final int RC_SIGN_IN = 1;
     GoogleSignInClient mGoogleSignInClient;
     @Override
@@ -60,10 +60,15 @@ public class GoogleLogin extends AppCompatActivity implements View.OnClickListen
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
             // Signed in do stuff with profile
+            String firstName = account.getGivenName();
+            String idToken = account.getIdToken();
+            Intent mainMenu = new Intent(this, MainMenu.class);
+            mainMenu.putExtra(USER_NAME, firstName);
+            mainMenu.putExtra(ID_TOKEN, idToken);
+            startActivity(mainMenu);
         } catch (ApiException e) {
-
+            Log.d("LOGINEXCEPTION","signInResult:failed code=" + e.getStatusCode());
         }
     }
 }
