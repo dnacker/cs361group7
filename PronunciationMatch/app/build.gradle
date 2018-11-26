@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'key0'
             keyPassword 'group7'
-            storeFile file('/home/pappas/Documents/cs361group7/PronunciationMatch/pronunciationMatch.jks')
+            storeFile file('./../pronunciationMatch.jks')
             storePassword 'group7'
         }
     }
