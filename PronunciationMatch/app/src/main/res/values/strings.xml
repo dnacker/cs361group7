@@ -6,4 +6,9 @@
     <string name="title_activity_login">Sign in</string>
     <string name="gotoPhonemes">Phoneme Practice</string>
     <string name="statsButton">Statistics</string>
+    <string name="phrase_practice">Phrase Practice</string>
+    <string name="hint_type_phrase">Type a phrase...</string>
+    <string name="play">Play</string>
+    <string name="convert_text">Convert Text</string>
+    <string name="toast_unable_to_convert">Unable to Convert Phrase</string>
 </resources>

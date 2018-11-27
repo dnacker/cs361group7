@@ -26,7 +26,8 @@
             android:exported="true" />
         <activity android:name=".Activities.PhonemeSelectionActivity" />
         <activity android:name=".Activities.MainMenu" />
-        <activity android:name=".Activities.StatisticsViewActivity"></activity>
+        <activity android:name=".Activities.StatisticsViewActivity" />
+        <activity android:name=".Activities.PhraseSelectionActivity"></activity>
     </application>
 
 </manifest>
