@@ -15,4 +15,5 @@
     <string name="startRecord">Record</string>
     <string name="stopRecord">Stop</string>
     <string name="playRecord">Play</string>
+    <string name="gotoRecorder">Recorder</string>
 </resources>

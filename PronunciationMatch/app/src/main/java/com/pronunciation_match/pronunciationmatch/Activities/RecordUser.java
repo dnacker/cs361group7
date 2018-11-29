@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.pronunciation_match.pronunciationmatch.R;
 
+import java.io.File;
 import java.io.IOException;
 
 public class RecordUser extends AppCompatActivity {
@@ -67,6 +68,11 @@ public class RecordUser extends AppCompatActivity {
             mPlayer.release();
             mPlayer = null;
         }
+
+        File deleteFile = new File(mAudioFileName);
+        if (deleteFile.exists()) {
+            deleteFile.delete();
+        }
     }
 
     public void recordUser (View view) {
@@ -87,9 +93,11 @@ public class RecordUser extends AppCompatActivity {
     }
 
     public void stopRecording (View view) {
-        mRecorder.stop();
-        mRecorder.release();
-        mRecorder = null;
+        if (mRecorder != null) {
+            mRecorder.stop();
+            mRecorder.release();
+            mRecorder = null;
+        }
     }
 
     public void playRecording (View view) {
