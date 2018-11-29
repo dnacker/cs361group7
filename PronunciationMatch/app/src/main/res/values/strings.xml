@@ -11,4 +11,8 @@
     <string name="play">Play</string>
     <string name="convert_text">Convert Text</string>
     <string name="toast_unable_to_convert">Unable to Convert Phrase</string>
+    <string name="title_activity_record_user">RecordUserActivity</string>
+    <string name="startRecord">Record</string>
+    <string name="stopRecord">Stop</string>
+    <string name="playRecord">Play</string>
 </resources>
