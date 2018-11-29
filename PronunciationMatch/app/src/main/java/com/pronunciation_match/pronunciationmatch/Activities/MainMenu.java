@@ -36,4 +36,9 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent (this, StatisticsViewActivity.class);
         startActivity(intent);
     }
+
+    public void gotoPhrases(View view) {
+        Intent intent = new Intent(this, PhraseSelectionActivity.class);
+        startActivity(intent);
+    }
 }

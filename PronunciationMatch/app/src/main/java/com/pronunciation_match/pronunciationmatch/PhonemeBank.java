@@ -32,4 +32,13 @@ public class PhonemeBank {
     public List<Phoneme> getPhonemes() {
         return mPhonemes;
     }
+
+    public Phoneme getPhoneme(String text, Tone tone) {
+        for (Phoneme p: mPhonemes) {
+            if (p.getText().equals(text) && p.getTone().equals(tone)) {
+                return p;
+            }
+        }
+        return null;
+    }
 }
