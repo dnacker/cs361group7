@@ -41,4 +41,9 @@ public class MainMenu extends AppCompatActivity {
         Intent intent = new Intent(this, PhraseSelectionActivity.class);
         startActivity(intent);
     }
+
+    public void gotoRecorder(View view) {
+        Intent intent = new Intent(this, RecordUser.class);
+        startActivity(intent);
+    }
 }
