@@ -7,7 +7,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,19 +32,13 @@ public class PhonemeSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phoneme_selection);
 
-        mDrawerLayout = findViewById(R.id.phoneme_drawer_layout);
-        NavigationView navigationView = findViewById(R.id.phoneme_nav_view);
-
-        // Reflect current page in nav drawer
-        Menu navDrawer = navigationView.getMenu();
-        MenuItem currentMenu = navDrawer.findItem(R.id.nav_phoneme_practice);
-        currentMenu.setChecked(true);
-
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                        // menuItem.setChecked(true);
+                        menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();
                         Intent i;
                         switch (menuItem.getItemId()) {
