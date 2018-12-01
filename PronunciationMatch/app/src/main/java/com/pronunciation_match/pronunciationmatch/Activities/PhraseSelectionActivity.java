@@ -5,9 +5,12 @@ import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.content.res.AssetFileDescriptor;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +23,7 @@ import com.pronunciation_match.pronunciationmatch.Phoneme;
 import com.pronunciation_match.pronunciationmatch.Phrase;
 import com.pronunciation_match.pronunciationmatch.R;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -78,7 +82,7 @@ public class PhraseSelectionActivity extends AppCompatActivity {
         String text = editText.getText().toString();
         Log.v(TAG, text);
         try {
-            mPhrase = new Phrase(text);
+            mPhrase = new Phrase(text, this);
             textView.setText(mPhrase.toString());
         } catch (IllegalArgumentException e) {
             mPhrase = null;
@@ -87,7 +91,7 @@ public class PhraseSelectionActivity extends AppCompatActivity {
         }
     }
 
-    public void playPhrase(View view) {
+    public void playPhrase(View view) throws IOException {
         if (mPhrase != null) {
             List<Phoneme> phonemeList = mPhrase.getPhonemes();
             List<MediaPlayer> mediaPlayers = new LinkedList<>();
@@ -96,7 +100,11 @@ public class PhraseSelectionActivity extends AppCompatActivity {
             for (int i = 0; i < phonemeList.size(); i++) {
                 Phoneme p = phonemeList.get(i);
                 prev = current;
-                current = MediaPlayer.create(view.getContext(), p.getResourceId());
+                AssetFileDescriptor afd = view.getContext().getAssets().openFd(p.getPath());
+                current = new MediaPlayer();
+                current.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                current.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                current.prepare();
                 if (prev != null) {
                     prev.setNextMediaPlayer(current);
                 }
@@ -105,5 +113,4 @@ public class PhraseSelectionActivity extends AppCompatActivity {
             mediaPlayers.get(0).start();
         }
     }
-
 }
