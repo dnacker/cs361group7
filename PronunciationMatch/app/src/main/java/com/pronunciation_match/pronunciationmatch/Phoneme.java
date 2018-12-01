@@ -4,12 +4,12 @@ public class Phoneme {
     private String mText;
     private String mDisplayText;
     private Tone mTone;
-    private int mResourceId;
+    private String mPath;
 
-    public Phoneme(String text, Tone tone, int resId) {
+    public Phoneme(String text, Tone tone, String path) {
         mTone = tone;
         setText(text);
-        mResourceId = resId;
+        mPath = path;
     }
 
     private void setText(String text) {
@@ -30,9 +30,7 @@ public class Phoneme {
         return mTone;
     }
 
-    public int getResourceId() {
-        return mResourceId;
-    }
+    public String getPath() { return mPath; }
 
     public String toString() {
         return getDisplayText();
