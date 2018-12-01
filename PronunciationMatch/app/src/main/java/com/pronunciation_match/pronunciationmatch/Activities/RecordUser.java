@@ -1,17 +1,22 @@
 package com.pronunciation_match.pronunciationmatch.Activities;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.pronunciation_match.pronunciationmatch.R;
@@ -25,6 +30,7 @@ public class RecordUser extends AppCompatActivity {
     private MediaRecorder mRecorder = null;
     private MediaPlayer mPlayer = null;
     private boolean mCurrentlyRecording = false;
+    private DrawerLayout mDrawerLayout;
 
     //The section of code below was borrowed from the example in the MediaRecorder documentation
     //on the Android Developer site since adequate experience in permissions isn't available
@@ -48,6 +54,45 @@ public class RecordUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_user);
+
+        mDrawerLayout = findViewById(R.id.record_drawer_layout);
+        NavigationView navigationView = findViewById(R.id.record_nav_view);
+
+        Menu navDrawer = navigationView.getMenu();
+        MenuItem currentMenu = navDrawer.findItem(R.id.nav_recorder);
+        currentMenu.setChecked(true);
+
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        mDrawerLayout.closeDrawers();
+                        Intent i;
+                        switch (item.getItemId()) {
+                            case R.id.nav_stats:
+                                i = new Intent(RecordUser.this, StatisticsViewActivity.class);
+                                startActivity(i);
+                                break;
+                            case R.id.nav_phoneme_practice:
+                                i = new Intent(RecordUser.this, PhonemeSelectionActivity.class);
+                                startActivity(i);
+                                break;
+                            case R.id.nav_phrase_practice:
+                                i = new Intent(RecordUser.this, PhraseSelectionActivity.class);
+                                startActivity(i);
+                                break;
+                            case R.id.nav_recorder:
+                                /*
+                                i = new Intent(RecordUser.this, RecordUser.class);
+                                startActivity(i);
+                                */
+                                break;
+                        }
+                        return false;
+
+                    }
+                }
+        );
 
         // The following three lines came from the MediaRecorder example as well
         mAudioFileName = getExternalCacheDir().getAbsolutePath();
