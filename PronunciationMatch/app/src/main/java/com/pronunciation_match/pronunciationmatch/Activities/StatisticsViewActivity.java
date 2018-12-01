@@ -72,7 +72,7 @@ public class StatisticsViewActivity extends AppCompatActivity {
         );
 
         ListView listView = findViewById(R.id.phonemeList);
-        phonemeBank = PhonemeBank.getInstance();
+        phonemeBank = PhonemeBank.getInstance(this);
 
         phonemeAdapter = new PhonemeAdapter(this, android.R.layout.simple_list_item_1, phonemeBank.getPhonemes());
         listView.setAdapter(phonemeAdapter);
