@@ -1,5 +1,6 @@
 package com.pronunciation_match.pronunciationmatch.Activities;
 
+
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
@@ -37,6 +38,9 @@ public class PhraseSelectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phrase_selection);
 
+        EditText editText = findViewById(R.id.editTextPhrase);
+        editText.setText("ni2 hao3");
+        convertTextToPhrase(editText);
         mDrawerLayout = findViewById(R.id.phrase_drawer_layout);
         NavigationView navigationView = findViewById(R.id.phrase_nav_view);
 
